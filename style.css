@@ -1,0 +1,166 @@
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;500;600;800&display=swap);
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #263238;
+  color: white;
+}
+
+.boards{
+    width: 90%;
+    margin: 32px auto;
+}
+
+.board, .board-create{
+    min-width: 300px;
+    background-color: rgb(25, 35, 41);
+    border: 1px solid rgb(6, 23, 32);
+    margin: 0 16px 16px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+.board h3, .board-create h3{
+    padding: 16px;
+    margin: 0;
+    color: #FD951Fcc;
+}
+
+.board-create>div{
+    padding: 16px;
+}
+
+.board-create>div>.card{
+    margin: 0;
+}
+
+input{
+    box-sizing: border-box;
+    padding: .5em .5em .5em 1em;
+    width: 95%;
+    margin: 10px auto;
+    border: 1px solid;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+form>div{
+    box-sizing: border-box;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+}
+
+label{
+    font-size: 13px;
+}
+
+.option{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.option>input{
+    width: 20px;
+}
+
+button{
+    padding: .5em;
+    margin: 0 auto;
+    border: 1px solid;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+.delete{
+    background-color: #ef5350e8;
+    color: white;
+    border: 1px solid #d32f2f;
+    margin-top: 7px;
+}
+
+.dropzone{
+    padding: 16px;
+    min-width: 282px;
+    min-height: 200px;
+}
+
+.card{
+    background: #37474F;
+    padding: 16px;
+    border-bottom: 2px solid #FD951Fcc;
+    width: 250px;
+    margin:25px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+.status{
+    width:30px;
+    height: 8px;
+    background: #9C27B0;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+.cards .dropzone{
+    transition: 400ms ease-in-out;
+    -webkit-transition: 400ms ease-in-out;
+    -moz-transition: 400ms ease-in-out;
+    -ms-transition: 400ms ease-in-out;
+    -o-transition: 400ms ease-in-out;
+}
+
+.hightlight{
+    background-color:rgb(33, 61, 78) ;
+}
+
+.is-dragging{
+    cursor: move;
+    opacity: 0.3;
+}
+
+.over{
+    background-color: rgba(67, 160, 72, 0.377);
+}
+
+@media screen and (min-width:800px){
+    .boards{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .board-create>div>.card {
+        margin: 0;
+    }
+    .board-create,.board{
+        min-width: 314px;
+    }
+}
+
+@media screen and (min-width:800px){
+    .boards{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+    }
+}
+
