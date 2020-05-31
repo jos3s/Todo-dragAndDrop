@@ -51,12 +51,19 @@ dropzones.forEach( dropzone => {
 
 function dragover() {
     this.classList.add('over');
-    const cardBeingDragged = document.querySelector('.is-dragging');
-    const status=cardBeingDragged.querySelector(".status");
-    const color=cardBeingDragged.parentElement.classList[1];
+    const child = document.querySelector('.is-dragging');
+    const status=child.querySelector(".status");
+    const color=child.parentElement.classList[1];
+    child.style.borderBottom='3px solid '+ colors[color];
     status.style.background=colors[color];
-    cardBeingDragged.style.borderBottom='3px solid '+ colors[color];
-    this.appendChild(cardBeingDragged);
+    let target = event.target;
+    if(child && target != this) {
+        this.insertBefore(child, target)
+    } else if(child) {
+        this.appendChild(child);
+    }
+    event.dataTransfer.dropEffect = "move";
+    event.preventDefault();
     saveCards();
 }
 
