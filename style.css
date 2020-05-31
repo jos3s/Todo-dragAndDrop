@@ -11,7 +11,7 @@ body {
     margin: 32px auto;
 }
 
-.board, .board-create{
+.board{
     min-width: 300px;
     background-color: rgb(25, 35, 41);
     border: 1px solid rgb(6, 23, 32);
@@ -23,26 +23,28 @@ body {
     -o-border-radius: 4px;
 }
 
-.board h3, .board-create h3{
+.board>.card{
+    margin: 0 16px 16px;
+}
+
+.board h3{
     padding: 16px;
     margin: 0;
     color: #FD951Fcc;
 }
 
-.board-create>div{
-    padding: 16px;
-}
 
-.board-create>div>.card{
-    margin: 0;
+.create-card{
+    margin: 0 16px 16px;
 }
 
 input{
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #263238;
     box-sizing: border-box;
     padding: .5em .5em .5em 1em;
-    width: 95%;
+    width: 82%;
     margin: 10px auto;
-    border: 1px solid;
     border-radius: 4px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -50,27 +52,9 @@ input{
     -o-border-radius: 4px;
 }
 
-form>div{
-    box-sizing: border-box;
-    width: 95%;
-    display: flex;
-    justify-content: space-between;
-}
-
-label{
-    font-size: 13px;
-}
-
-.option{
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
-.option>input{
-    width: 20px;
-}
-
 button{
+    background-color: #263238;
+    color: rgba(255, 255, 255, 0.719);
     padding: .5em;
     margin: 0 auto;
     border: 1px solid;
@@ -109,10 +93,12 @@ button{
     -o-border-radius: 4px;
 }
 
+.content{
+    word-wrap: break-word;
+}
 .status{
     width:30px;
     height: 8px;
-    background: #9C27B0;
     margin-bottom: 16px;
     border-radius: 8px;
     -webkit-border-radius: 8px;
@@ -139,28 +125,39 @@ button{
 }
 
 .over{
-    background-color: rgba(67, 160, 72, 0.377);
+    background-color: rgba(67, 160, 72, 0.137);
 }
 
-@media screen and (min-width:800px){
-    .boards{
+@media screen and (min-width:500px){
+    .dropzone{
         display: flex;
-        justify-content: space-around;
         flex-wrap: wrap;
     }
-    .board-create>div>.card {
-        margin: 0;
+    .card{
+        margin-left: 10px;
+        flex: 0 0 25%;
     }
-    .board-create,.board{
+}
+@media screen and (min-width:800px){
+    .boards{
+        
+    }
+    .board{
         min-width: 314px;
     }
 }
 
-@media screen and (min-width:800px){
+@media screen and (min-width:1024px){
     .boards{
         display: flex;
         justify-content: space-around;
         flex-wrap: nowrap;
+    }
+    .dropzone{
+        display: block;
+    }
+    .card{
+        margin-left: 0;
     }
 }
 

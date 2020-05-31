@@ -10,57 +10,46 @@
 <body>
 
     <div class="boards">
-        <div class="board-create">
-            <h3>Crie um card</h3>
-            <div>
-                <div class="card">
-                    Novo card:
+        <div class="board">
+            <h3>A fazer</h3>
+            <div class="create-card">
+                <div class="content">
                     <form>
-                        <input type="text" name="" id="">
-                        <div>
-                            <label class="option" for="todo">
-                                Todo<input type="radio" name="todo" id="todo">
-                            </label>
-                            <label class="option" for="progress">
-                                In progress<input type="radio" name="progress" id="progress">
-                            </label>
-                            <label class="option" for='done'>
-                                Done<input type="radio" name="done" id="done">
-                            </label>
-                        </div>
+                        <input type="text" name="" id="" placeholder="Nova tarefa...">
                         <button type="submit" class="create">Criar</button>
                     </form>
                 </div>
             </div>
+            <div class="dropzone todo">
+                
+            </div>
         </div>
-        <div class="board">
-            <h3>Todo</h3>
-            <div class="dropzone">
-                <div class="card" draggable="true">
-                    <div class="status"></div>
-                    <div class="content"> Do videos!</div>
-                    <button class="delete"title="Apagar">Apagar</button>
+        <div class="board ">
+            <h3>Em progresso</h3>
+            <div class="create-card">
+                <div class="content">
+                    <form>
+                        <input type="text" name="" id="" placeholder="Nova tarefa...">
+                        <button type="submit" class="create">Criar</button>
+                    </form>
                 </div>
+            </div>
+            <div class="dropzone progress">
+               
             </div>
         </div>
         <div class="board">
-            <h3>In progress</h3>
-            <div class="dropzone">
-                <div class="card" draggable="true">
-                    <div class="status"></div>
-                    <div class="content"> Forum</div>
-                    <button class="delete" title="Apagar">Apagar</button>
+            <h3>Concluido</h3>
+            <div class="create-card">
+                <div class="content">
+                    <form>
+                        <input type="text" name="" id="" placeholder="Nova tarefa...">
+                        <button type="submit" class="create">Criar</button>
+                    </form>
                 </div>
             </div>
-        </div>
-        <div class="board">
-            <h3>Done</h3>
-            <div class="dropzone">
-                <div class="card" draggable="true">
-                    <div class="status"></div>
-                    <div class="content"> Next Level Week</div>
-                    <button class="delete" title="Apagar">Apagar</button>
-                </div>
+            <div class="dropzone done">
+                
             </div>
         </div>
     </div>
