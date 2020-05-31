@@ -1,8 +1,14 @@
 @import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;500;600;800&display=swap);
 
+:root{
+    --bg:#232931;
+    --higthlight:#4ecca3;
+    --bg-card:#393e46;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: #263238;
+  background-color: var(--bg);
   color: white;
 }
 
@@ -13,7 +19,7 @@ body {
 
 .board{
     min-width: 300px;
-    background-color: rgb(25, 35, 41);
+    background-color: var(--bg-card);
     border: 1px solid rgb(6, 23, 32);
     margin: 0 16px 16px;
     border-radius: 4px;
@@ -30,9 +36,8 @@ body {
 .board h3{
     padding: 16px;
     margin: 0;
-    color: #FD951Fcc;
+    color: var(--higthlight);
 }
-
 
 .create-card{
     margin: 0 16px 16px;
@@ -53,8 +58,8 @@ input{
 }
 
 button{
-    background-color: #263238;
-    color: rgba(255, 255, 255, 0.719);
+    background-color: var(--bg);
+    color: var(--higthlight);
     padding: .5em;
     margin: 0 auto;
     border: 1px solid;
@@ -68,22 +73,21 @@ button{
 .delete{
     background-color: #ef5350e8;
     color: white;
-    border: 1px solid #d32f2f;
+    border-color:#d32f2f;
     margin-top: 7px;
 }
 
 .dropzone{
     padding: 16px;
     min-width: 282px;
-    min-height: 200px;
+    height: calc(80% - 100px);
 }
 
 .card{
-    background: #37474F;
+    background: var(--bg);
     padding: 16px;
-    border-bottom: 2px solid #FD951Fcc;
     width: 250px;
-    margin:25px 0;
+    margin:15px 0;
     font-size: 18px;
     font-weight: 600;
     border-radius: 4px;
@@ -139,9 +143,6 @@ button{
     }
 }
 @media screen and (min-width:800px){
-    .boards{
-        
-    }
     .board{
         min-width: 314px;
     }
@@ -153,10 +154,14 @@ button{
         justify-content: space-around;
         flex-wrap: nowrap;
     }
+    .board{
+        width: 380px;
+    }
     .dropzone{
         display: block;
     }
     .card{
+        width: 300px;
         margin-left: 0;
     }
 }
