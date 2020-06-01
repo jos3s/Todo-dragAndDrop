@@ -151,7 +151,7 @@ button{
 @media screen and (min-width:1024px){
     .boards{
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
         flex-wrap: nowrap;
     }
     .board{
@@ -161,7 +161,7 @@ button{
         display: block;
     }
     .card{
-        width: 300px;
+        max-width: 300px;
         margin-left: 0;
     }
 }
