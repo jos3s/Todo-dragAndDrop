@@ -1,12 +1,9 @@
 const dropzones = document.querySelectorAll('.dropzone');
 const colors={
-    todo:'#42A5F5',
-    progress:'#43A047',
-    done:'#AB47BC'
-
+    todo    : '#42A5F5',
+    progress: '#43A047',
+    done    : '#AB47BC'
 }
-
-const cards=['Do videos!','Forum','Next Level Week'];
 
 document.addEventListener('click', el=>{
     e=el.target;
@@ -77,9 +74,9 @@ function drop() {
 }
 
 function createElement(form) {
-    const board=form.parentNode.parentNode.parentNode;
-    const dropzone=board.querySelector('.dropzone');
-    const input=form.querySelector('input').value;
+    const board    = form.parentNode.parentNode.parentNode;
+    const dropzone = board.querySelector('.dropzone');
+    const input    = form.querySelector('input').value;
     if(dropzone.classList.contains("todo")) newCard=createCard(input,'todo');
     if(dropzone.classList.contains("progress")) newCard=createCard(input,'progress');
     if(dropzone.classList.contains("done")) newCard=createCard(input,'done');
@@ -89,19 +86,30 @@ function createElement(form) {
 }
 
 function createCard(txt,type) {
+    const card    = createModelCard(type);
+    const status  = createStatus(type);
+    const content = createContent(txt);
+    const button  = createButtonDelete();
+
+    card.appendChild(status);
+    card.appendChild(content);
+    card.appendChild(button);
+    return card;
+}
+
+function createModelCard(color) {
     const card=document.createElement('div');
     card.setAttribute('draggable','true');
     card.setAttribute('class','card');
+    card.style.borderBottom='2px solid '+ colors[color];
+    return card;
+}
+
+function createStatus(color) {
     const status=document.createElement('div');
     status.setAttribute('class','status');
-    status.style.background=colors[type];
-    card.style.borderBottom='2px solid '+ colors[type];
-    card.appendChild(status);
-    const content=createContent(txt);
-    card.appendChild(content);
-    const button=createButtonDelete();
-    card.appendChild(button);
-    return card;
+    status.style.background=colors[color];
+    return status;
 }
 
 function createContent(txt) {
@@ -127,9 +135,9 @@ function deleteCard(e){
 }
 
 function saveCards() {
-    const cardsTodo=document.querySelectorAll('.todo>.todo>.card');
-    const cardsProgress=document.querySelectorAll('.progress>.progress>.card');
-    const cardsDone=document.querySelectorAll('.done>.done>.card');
+    const cardsTodo     = document.querySelectorAll('.todo>.todo>.card');
+    const cardsProgress = document.querySelectorAll('.progress>.progress>.card');
+    const cardsDone     = document.querySelectorAll('.done>.done>.card');
     const listTodo=[]
     const listProgress=[]
     const listDone=[];
@@ -158,13 +166,14 @@ function formatJSON(array) {
     return json;
 }
 
+function restoreFromJSON(item) {
+    return localStorage.getItem(item);
+}
+
 function restoreCards() {
-    const todoJSON=localStorage.getItem('cardsTodo');
-    const cardsTodo=JSON.parse(todoJSON);
-    const progressJSON=localStorage.getItem('cardsProgress');
-    const cardsProgress=JSON.parse(progressJSON);
-    const doneJSON=localStorage.getItem('cardsDone');
-    const cardsDone=JSON.parse(doneJSON);
+    const cardsTodo     = JSON.parse(restoreFromJSON('cardsTodo'));
+    const cardsProgress = JSON.parse(restoreFromJSON('cardsProgress'));
+    const cardsDone     = JSON.parse(restoreFromJSON('cardsDone'));
 
     cardsTodo.forEach(card=>{
         dropzones[0].appendChild(createCard(card,'todo'));
