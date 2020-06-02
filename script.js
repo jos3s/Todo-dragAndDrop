@@ -1,9 +1,7 @@
 const dropzones = document.querySelectorAll('.dropzone');
 const colors={
-    todo    : '#42A5F5',
-    progress: '#43A047',
-    done    : '#AB47BC'
-}
+    todo: '#42A5F5', progress: '#43A047', done: '#AB47BC', notes: '#FFD54F',
+};
 
 document.addEventListener('click', el=>{
     e=el.target;
@@ -48,11 +46,7 @@ dropzones.forEach( dropzone => {
 
 function dragover() {
     this.classList.add('over');
-    const child = document.querySelector('.is-dragging');
-    const status=child.querySelector(".status");
-    const color=child.parentElement.classList[1];
-    child.style.borderBottom='3px solid '+ colors[color];
-    status.style.background=colors[color];
+    const child = recreateCard();
     let target = event.target;
     if(child && target != this) {
         this.insertBefore(child, target)
@@ -62,6 +56,15 @@ function dragover() {
     event.dataTransfer.dropEffect = "move";
     event.preventDefault();
     saveCards();
+}
+
+function recreateCard() {
+    const card=document.querySelector('.is-dragging');
+    const status=card.querySelector(".status");
+    const color=card.parentElement.classList[1];
+    card.style.borderBottom='3px solid '+ colors[color];
+    status.style.background=colors[color];
+    return card;
 }
 
 function dragleave() {
@@ -77,9 +80,10 @@ function createElement(form) {
     const board    = form.parentNode.parentNode.parentNode;
     const dropzone = board.querySelector('.dropzone');
     const input    = form.querySelector('input').value;
-    if(dropzone.classList.contains("todo")) newCard=createCard(input,'todo');
+    if(dropzone.classList.contains("todo"))     newCard=createCard(input,'todo');
     if(dropzone.classList.contains("progress")) newCard=createCard(input,'progress');
-    if(dropzone.classList.contains("done")) newCard=createCard(input,'done');
+    if(dropzone.classList.contains("done"))     newCard=createCard(input,'done');
+    if(dropzone.classList.contains("notes"))    newCard=createCard(input,'notes');
     dropzone.appendChild(newCard);
     createCardDrag();
     saveCards();
@@ -101,7 +105,7 @@ function createModelCard(color) {
     const card=document.createElement('div');
     card.setAttribute('draggable','true');
     card.setAttribute('class','card');
-    card.style.borderBottom='2px solid '+ colors[color];
+    card.style.borderBottom='3px solid '+ colors[color];
     return card;
 }
 
@@ -138,9 +142,11 @@ function saveCards() {
     const cardsTodo     = document.querySelectorAll('.todo>.todo>.card');
     const cardsProgress = document.querySelectorAll('.progress>.progress>.card');
     const cardsDone     = document.querySelectorAll('.done>.done>.card');
+    const cardsNotes    = document.querySelectorAll('.notes>.notes>.card');
     const listTodo=[]
     const listProgress=[]
     const listDone=[];
+    const listNotes=[];
     cardsTodo.forEach(card=>{
         listTodo.push(formatText(card));
     });
@@ -150,9 +156,13 @@ function saveCards() {
     cardsDone.forEach(card=>{
         listDone.push(formatText(card));
     });
+    cardsNotes.forEach(card=>{
+        listNotes.push(formatText(card));
+    });
     localStorage.setItem('cardsTodo',formatJSON(listTodo));
     localStorage.setItem('cardsProgress',formatJSON(listProgress));
     localStorage.setItem('cardsDone',formatJSON(listDone));
+    localStorage.setItem('cardsNotes',formatJSON(listNotes));
 }
 
 function formatText(txt){
@@ -174,6 +184,7 @@ function restoreCards() {
     const cardsTodo     = JSON.parse(restoreFromJSON('cardsTodo'));
     const cardsProgress = JSON.parse(restoreFromJSON('cardsProgress'));
     const cardsDone     = JSON.parse(restoreFromJSON('cardsDone'));
+    const cardsNotes    = JSON.parse(restoreFromJSON('cardsNotes'));
 
     cardsTodo.forEach(card=>{
         dropzones[0].appendChild(createCard(card,'todo'));
@@ -187,6 +198,11 @@ function restoreCards() {
     });
     cardsDone.forEach(card=>{
         dropzones[2].appendChild(createCard(card,'done'));
+        createCardDrag();
+        saveCards();
+    });
+    cardsNotes.forEach(card=>{
+        dropzones[3].appendChild(createCard(card,'notes'));
         createCardDrag();
         saveCards();
     });
