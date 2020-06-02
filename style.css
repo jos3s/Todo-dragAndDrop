@@ -21,7 +21,7 @@ body {
     min-width: 300px;
     background-color: var(--bg-card);
     border: 1px solid rgb(6, 23, 32);
-    margin: 0 16px 16px;
+    margin: 0 10px 10px;
     border-radius: 4px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -100,6 +100,7 @@ button{
 .content{
     word-wrap: break-word;
 }
+
 .status{
     width:30px;
     height: 8px;
@@ -132,6 +133,30 @@ button{
     background-color: rgba(67, 160, 72, 0.137);
 }
 
+::-webkit-scrollbar {
+    width:8px;
+    height: 10px;
+}
+ 
+::-webkit-scrollbar-track {
+    background:var(--bg-card);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--higthlight);
+}
+
+footer{
+    font-size: 12px;
+    color: #4e555f;
+    display: flex;
+    justify-content: center;
+}
+
+footer a{
+    color: var(--higthlight);
+}
+
 @media screen and (min-width:500px){
     .dropzone{
         display: flex;
@@ -144,24 +169,24 @@ button{
 }
 @media screen and (min-width:800px){
     .board{
-        min-width: 314px;
+        width: 314px;
     }
 }
 
 @media screen and (min-width:1024px){
     .boards{
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-around;
         flex-wrap: nowrap;
     }
     .board{
-        width: 380px;
+        min-width: 316px;
     }
     .dropzone{
         display: block;
     }
     .card{
-        max-width: 300px;
+        max-width: 260px;
         margin-left: 0;
     }
 }
